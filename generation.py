@@ -13,7 +13,7 @@ def digitsGenerator(cpf):
     secondt_digit = str(secondDigit(cpf))
     return first_digit + secondt_digit
 
-def cpfMask(cpf):
+def cpfMask(cpf: str) -> str:
     return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
 
 def cpfsMask(cpfs):

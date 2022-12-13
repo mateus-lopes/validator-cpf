@@ -7,7 +7,7 @@ from generation import (
 from validation import ( 
     cpfLength,
     cpfValidator,
-    digitsCalcTwo,
+    cleanCpf,
     digitsCalc,
     firstDigit,
     secondDigit,
@@ -39,21 +39,27 @@ def test_digitsGenerator():
     assert len(digitsGenerator('123452789')) == 2 
 
 def test_cpfMask():
-    assert cpfMask('77343717562') == '773.437.175-62'
+    assert cpfMask('14056110905') == '140.561.109-05'
 
 def test_digitsCalc():
-    assert digitsCalc('140561109', 8) == 0
-    assert digitsCalc('1405611090', 9) == 5
-    assert digitsCalc('264704855', 8) == 6
-    assert digitsCalc('2647048556', 9) == 2
+    assert digitsCalc('140561109') == 0
+    assert digitsCalc('1405611090') == 5
+    assert digitsCalc('132924309') == 9
+    assert digitsCalc('1329243099') == 2
 
-def test_digitsCalcTwo():
-    assert digitsCalcTwo(83) == 6
-    assert digitsCalcTwo(109) == 0
-    assert digitsCalcTwo(139) == 7
-    assert digitsCalcTwo(153) == 0
+def test_digitsCalc():
+    assert digitsCalc(233) == 2
+    assert digitsCalc(185) == 9
+    assert digitsCalc(126) == 5
+    assert digitsCalc(153) == 0
 
 def test_equalNumbers():
     assert equalNumbers('12312312323') == False
     assert equalNumbers('11111111111') == True
     assert equalNumbers('2') == True
+
+def test_cleanCpf():
+    assert cleanCpf('140.561.109-05') == '14056110905'
+    assert cleanCpf('apenasletras2') == '2'
+    assert cleanCpf('a.p.s') == ''
+    assert cleanCpf('123fdaf4543--.') == '1234543'
