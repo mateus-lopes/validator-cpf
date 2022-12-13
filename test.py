@@ -1,10 +1,10 @@
-from generation import (
+from src.generation import (
     listGenerator,
     digitsGenerator,
     cpfMask,
 )
 
-from validation import ( 
+from src.validation import ( 
     cpfLength,
     cpfValidator,
     cleanCpf,

@@ -4,7 +4,7 @@
 # ------------------------------------------------------ #
 
 
-from colorama import Fore, Style
+# from colorama import Fore, Style
 from os import system
 
 from generation import (
@@ -48,9 +48,11 @@ def validationInt():
     cpf = input('\nEnter your CPF: ')
     validator = cpfValidator(cpf)
     if validator:
-        formatText(textColor(Fore.GREEN, '- Valid CPF -'))
+        print('foi')
+        # formatText(textColor(Fore.GREEN, '- Valid CPF -'))
     else:
-        formatText(textColor(Fore.RED, '- Invalid CPF -'))
+        print('n foi')
+        # formatText(textColor(Fore.RED, '- Invalid CPF -'))
     return userInterface()
 
 def navInt(nav_list, input_message):
